@@ -36,6 +36,6 @@ if __name__ == "__main__":
             with warnings.catch_warnings():
                 if not args.verbose:
                     warnings.simplefilter("ignore")
-                adata = mudata.read(path)
+                adata = mudata.read(path, backed=True)
             print(adata)
             del adata
