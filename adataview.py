@@ -3,6 +3,15 @@ import warnings
 import argparse
 import mudata
 
+
+def imports():
+    global sc, np, sns, plt, IPython
+    import scanpy as sc
+    import numpy as np
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    import IPython
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog="adataview", description="Quickly inspect anndata objects. Also supports mudata")
     parser.add_argument("anndata", metavar="adata", nargs="+", help="Path to the anndata object to open")
@@ -20,7 +29,7 @@ if __name__ == "__main__":
                 adatas.append(mudata.read(path))
         if len(adatas) == 1:
             adata = adatas[0]
-        import IPython
+        imports()
         IPython.embed(colors="neutral")
     else:
         for path in args.anndata:
